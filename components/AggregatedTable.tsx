@@ -48,8 +48,18 @@ const AggregatedTable: React.FC<{ year: number }> = ({ year }) => {
     }, [year]);
 
     const columns = [
-        { title: 'Job Title', dataIndex: 'job_title', key: 'jobTitle' },
-        { title: 'Count', dataIndex: 'count', key: 'count' }
+        {
+            title: 'Job Title',
+            dataIndex: 'job_title',
+            key: 'jobTitle',
+            sorter: (a: AggregatedData, b: AggregatedData) => a.job_title.localeCompare(b.job_title),
+        },
+        {
+            title: 'Count',
+            dataIndex: 'count',
+            key: 'count',
+            sorter: (a: AggregatedData, b: AggregatedData) => a.count - b.count,
+        },
     ];
 
     return (

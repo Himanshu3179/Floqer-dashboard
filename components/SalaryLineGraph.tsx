@@ -35,7 +35,7 @@ const SalaryLineGraph: React.FC = () => {
             const numericYear = parseInt(year);
             return {
                 year: numericYear,
-                average_salary: summary[numericYear].totalSalary / summary[numericYear].count
+                average_salary: Math.round(summary[numericYear].totalSalary / summary[numericYear].count)
             };
         });
 
@@ -47,14 +47,16 @@ const SalaryLineGraph: React.FC = () => {
     }, []);
 
     return (
-        <LineChart width={600} height={300} data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="average_salary" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
+        <div className="bg-white shadow-lg p-4 rounded-lg">
+            <LineChart width={600} height={300} data={data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="year" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="average_salary" stroke="#8884d8" activeDot={{ r: 8 }} />
+            </LineChart>
+        </div>
     );
 };
 

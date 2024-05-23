@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nivo/line": "^0.87.0",
     "antd": "^5.17.3",
     "axios": "^1.7.2",
     "csv-parse": "^5.5.6",

@@ -10,7 +10,7 @@ interface SalaryData {
     salary_in_usd: number;
 }
 
-interface DataType {    
+interface DataType {
     work_year: number;
     total_jobs: number;
     average_salary: number;
@@ -39,7 +39,7 @@ const MainTable: React.FC<{ onRowClick: (year: number) => void }> = ({ onRowClic
             return {
                 work_year: numericYear,
                 total_jobs: summary[numericYear].totalJobs,
-                average_salary: summary[numericYear].totalSalary / summary[numericYear].totalJobs
+                average_salary: Math.round(summary[numericYear].totalSalary / summary[numericYear].totalJobs)
             };
         });
         setDataSource(data);
@@ -61,8 +61,12 @@ const MainTable: React.FC<{ onRowClick: (year: number) => void }> = ({ onRowClic
             columns={columns}
             rowKey="work_year"
             onRow={(record) => ({
-                onClick: () => { onRowClick(record.work_year); }
+                onClick: () => {
+                    onRowClick(record.work_year);
+                },
             })}
+            pagination={false}
+            className='cursor-pointer '
         />
     );
 };
